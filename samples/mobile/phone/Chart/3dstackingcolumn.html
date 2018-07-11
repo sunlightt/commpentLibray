@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+<body>
+    <div class="sample-control chart stackingcolumn3d">
+        <div align="center">
+            <div>
+                <div id="container_3dstackingcolumn" data-role="ejmchart">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#container_3dstackingcolumn").ejChart({
+            primaryXAxis:
+            {
+                range: { min: 2004, max: 2009, interval: 1 },
+                font: { size: '10px' },
+                majorGridLines: { visible: true, color: "#a9a9a9", opacity: 0.12 },
+
+            },
+            primaryYAxis:
+            {
+                font: { size: '10px' },
+                majorGridLines: { visible: true, color: "#a9a9a9", opacity: 0.12 },
+            },
+            commonSeriesOptions: {
+                type: 'stackingcolumn',
+                tooltip: { visible: true }
+            },
+            series: [
+                {
+                    points: [{ x: 2005, y: 4 }, { x: 2006, y: 5 }, { x: 2007, y: 6 }, { x: 2008, y: 7 },
+                    ],
+                    name: "INDIA", stackingGroup: 'Asia Continent'
+                },
+
+                {
+                    points: [{ x: 2005, y: 14 }, { x: 2006, y: 14 }, { x: 2007, y: 14 }, { x: 2008, y: 13 },
+                    ],
+                    name: "CHINA", stackingGroup: 'Asia Continent'
+                },
+
+                {
+                    points: [{ x: 2005, y: 17 }, { x: 2006, y: 17 }, { x: 2007, y: 16 }, { x: 2008, y: 13 },
+                    ],
+                    name: "CANADA", stackingGroup: 'North America Continent'
+                },
+
+                {
+                    points: [{ x: 2005, y: 17 }, { x: 2006, y: 17 }, { x: 2007, y: 16 }, { x: 2008, y: 13 }
+                    ],
+                    name: "USA", stackingGroup: 'North America Continent'
+                }
+            ],
+            title: { text: "Passenger car sales", font: { size: '15px' } },
+            depth: 50,
+            wallSize: 2,
+            tilt: 0,
+            rotation: 34,
+            perspectiveAngle: 90,
+            sideBySideSeriesPlacement: true,
+            canResize: true,
+            enableRotation: false,
+            enable3D: true,
+            legend: { visible: false }
+        });
+    </script>
+</body>
+</html>

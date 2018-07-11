@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link href="../content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../content/ejthemes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="../content/default.css" rel="stylesheet" />
+    <link href="../content/default-responsive.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="../scripts/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <!--<![endif]-->
+    <script src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script src="../scripts/jsondata.min.js"></script>
+    <script src="../scripts/jsrender.min.js"></script>
+    <script src="../scripts/ej.web.all.min.js" type="text/javascript"></script>
+    <script src="../scripts/properties.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div id="Grid"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        $(document).ready(
+            // Function to call Predictive Analytics Web API
+            function () {
+                $.ajax({
+                    type: "POST",
+                    url: window.baseurl + 'api/PredictiveAnalytics/Load',
+                    data: JSON.stringify({ data: window.imports, pmmlFile: 'Imports.pmml', name: 'NeuralNetworks' }),
+                    contentType: "application/json; charset=utf-8", // content type sent to server
+                    dataType: "json", //Expected data format from server
+                    processdata: true, //True or False
+                    success: function (msg) {//On Successfull API call
+                        Succeeded(msg);
+                    },
+                    error: Failed// When API call fails
+                });
+            });
+
+        function Failed(result) {
+            alert('Web API call failed: ' + result.status + '' + result.statusText);
+        }
+
+        function Succeeded(result) {
+            var resultObject = JSON.parse(result);
+            var data = ej.DataManager(resultObject).executeLocal(ej.Query());
+            
+            $("#Grid").ejGrid({
+                dataSource: data,
+                allowPaging: true,
+                pageSettings: { pageCount: 3, pageSize: 10 },
+                allowSorting: true,
+                isResponsive: true,
+				scrollSettings:{height:210},
+				minWidth:700,
+                columns: [
+                        { field: "symboling", headerText: "symboling", width: 80, textAlign: ej.TextAlign.Right },
+                        { field: "normalizedLosses", headerText: "normalizedLosses", width: 130, textAlign: ej.TextAlign.Right },
+                        { field: "make", headerText: "make", width: 100 },
+                        { field: "fuelType", headerText: "fuelType", width: 85 },
+                        { field: "aspiration", headerText: "aspiration", width: 80 },
+                        { field: "numOfDoors", headerText: "numOfDoors", width: 100 },
+                        { field: "bodyStyle", headerText: "bodyStyle", width: 85 },
+                        { field: "driveWheels", headerText: "driveWheels", width: 100 },
+                        { field: "engineLocation", headerText: "engineLocation", width: 120 },
+                        { field: "wheelBase", headerText: "wheelBase", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "length", headerText: "length", width: 100 , textAlign: ej.TextAlign.Right},
+                        { field: "width", headerText: "width", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "height", headerText: "height", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "curbWeight", headerText: "curbWeight", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "engineType", headerText: "engineType", width: 100 },
+                        { field: "numOfCylinders", headerText: "numOfCylinders", width: 125 },
+                        { field: "engineSize", headerText: "engineSize", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "fuelSystem", headerText: "fuelSystem", width: 100 },
+                        { field: "bore", headerText: "bore", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "stroke", headerText: "stroke", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "compressionRatio", headerText: "compressionRatio", width: 130, textAlign: ej.TextAlign.Right },
+                        { field: "horsepower", headerText: "horsepower", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "peakRpm", headerText: "peakRpm", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "cityMpg", headerText: "cityMpg", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "highwayMpg", headerText: "highwayMpg", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "price", headerText: "price", width: 100, textAlign: ej.TextAlign.Right },
+                        { field: "Predicted_price", headerText: "Predicted_price", width: 150, textAlign: ej.TextAlign.Right, cssClass: "predictedColumnColor" }
+                ]
+            });
+        }
+
+        function Failed(xhr) {
+            alert(xhr.responseText);
+            if (xhr.responseText) {
+                var err = xhr.responseText;
+                if (err)
+                    error(err);
+                else
+                    error({ Message: "Unknown server error." })
+            } return;
+        }
+    </script>
+    <style>
+        .predictedColumnColor {
+            background-color: #d6d3d1 !important;
+        }
+    </style>
+</body>
+
+</html>

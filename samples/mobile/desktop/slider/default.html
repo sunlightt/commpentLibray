@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+<html lang="en">
+<body>
+    <script>
+
+        function LoanSlide() {
+            var value = App.activePage.find("#slider1").ejmSlider("getValue");
+            App.activePage.find('#loan').html("$" + value);
+            calculateEMI();
+        }
+        function InterestSlide() {
+            var value = App.activePage.find("#slider2").ejmSlider("getValue");
+            App.activePage.find('#interest').html(value + "% pa");
+            calculateEMI();
+        }
+        function TensureSlide() {
+            var value = App.activePage.find("#slider3").ejmSlider("getValue");
+            App.activePage.find('#tensure').html(value + " Years");
+            calculateEMI();
+        }
+        function calculateEMI() {
+            loan = App.activePage.find("#slider1").ejmSlider("getValue");
+            interest = App.activePage.find("#slider2").ejmSlider("getValue");
+            tensure = App.activePage.find("#slider3").ejmSlider("getValue");
+
+            interest = interest / 12 / 100;
+            tensure = tensure * 12;
+
+            window._emi = (loan * interest * (Math.pow((1 + interest), tensure))) / (Math.pow((1 + interest), tensure) - 1);
+            App.activePage.find('#emi').html("Monthly EMI Amount is $" + Math.floor(window._emi));
+        }
+        function SliderLoad() {
+            if (App.activePage.find("#slider1").data("ejmSlider"))
+                calculateEMI();
+        }
+    </script>
+    <div class='sample-control slider default'>
+        <div class="sb-slidersample">
+            <div class="sb-header">
+                DETAILS OF LOAN
+            </div>
+            <br />
+            <div class="sb-slidercontent">
+                <div class="sb-slider">
+                    <span class="sb-slidecaption">Loan Amount</span><br />
+                    <span id="loan" class="sb-slidelabel">$1500</span>
+                    <br />
+                    <div id="slider1" data-role="ejmslider" data-ej-incrementstep="100" data-ej-minvalue="100"
+                        data-ej-maxvalue="10000" data-ej-value="1500" data-ej-slide="LoanSlide">
+                    </div>
+                </div>
+                <div class="sb-slider">
+                    <span class="sb-slidecaption">Interest Rate</span><br />
+                    <span id="interest" class="sb-slidelabel">26% pa</span>
+                    <br />
+                    <div id="slider2" data-role="ejmslider" data-ej-slide="InterestSlide" data-ej-minvalue="1"
+                        data-ej-maxvalue="100" data-ej-value="26">
+                    </div>
+                </div>
+                <div class="sb-slider">
+                    <span class="sb-slidecaption">Tenure</span><br />
+                    <span id="tensure" class="sb-slidelabel">6 Years</span>
+                    <br />
+                    <div id="slider3" data-role="ejmslider" data-ej-slide="TensureSlide" data-ej-minvalue="1"
+                        data-ej-maxvalue="12" data-ej-value="6">
+                    </div>
+                </div>
+            </div>
+            <div id="emi" class="sb-emi">
+                Monthly EMI Amount is $41
+            </div>
+        </div>
+    </div>
+</body>
+</html>

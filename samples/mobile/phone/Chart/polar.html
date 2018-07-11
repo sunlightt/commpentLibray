@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+<body>
+    <div class="sample-control chart polar">
+        <div align="center">
+            <div>
+                <div id="container_polar" data-role="ejmchart">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function ChartLoad() {
+            $("#container_polar").ejChart({
+                primaryYAxis:
+                   {
+                       range: { min: 15, max: 90, interval: 15 },
+                       majorGridLines: { color: "black" }
+                   },
+                commonSeriesOptions: {
+                    type: 'polar', enableAnimation: false,
+                    tooltip: { visible: true }
+                },
+                series: [{
+                    points: [{ x: "North", y: 42 }, { x: "NorthWest", y: 28 }, { x: "West", y: 40 }, { x: "SouthWest", y: 45 },
+                        { x: "South", y: 20 }, { x: "SouthEast", y: 40 }, { x: "East", y: 25 }, { x: "NorthEast", y: 40 }
+                    ], zOrder: 2, marker: { visible: true }, name: 'Line'
+                },
+                       {
+                           points: [{ x: "North", y: 63 }, { x: "NorthWest", y: 73 }, { x: "West", y: 58 }, { x: "SouthWest", y: 65 },
+                        { x: "South", y: 47 }, { x: "SouthEast", y: 70 }, { x: "East", y: 45 }, { x: "NorthEast", y: 70 }
+                           ], drawType: 'column', zOrder: 1, border: { color: 'white', width: 1 }, name: 'Column',
+                           tooltip: { visible: true, fill: 'white', border: { width: 1, color: 'black' }, font: { color: "black" } }
+
+                       },
+                    {
+                        points: [{ x: "North", y: 80 }, { x: "NorthWest", y: 88 }, { x: "West", y: 79 }, { x: "SouthWest", y: 83 },
+                        { x: "South", y: 78 }, { x: "SouthEast", y: 90 }, { x: "East", y: 78 }, { x: "NorthEast", y: 85 }
+                        ], zOrder: 0, drawType: 'area', marker: { visible: true }, name: 'Area'
+                    }
+                ],
+                canResize: true,
+                legend: { visible: false }
+            });
+        }
+    </script>
+</body>
+</html>

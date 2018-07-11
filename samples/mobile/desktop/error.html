@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="e-m-user-select">
+
+<head>
+    <title>Essential Studio for JavaScript Mobile</title>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <link rel="shortcut icon" href="themes/sampleimages/favicon.ico" />
+    <link rel="stylesheet" href="themes/samplebrowser.css" />
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <style>
+        #support {
+            background-image: url(themes/sbimages/excumatory.png);
+            background-repeat: no-repeat;
+            background-position: top center;
+        }
+        
+        body .anchorclass.jslogo {
+            background-image: url(themes/sampleimages/azure-logo.png);
+        }
+        
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #errorIcon {
+            width: 320px;
+            margin: 85px auto auto auto;
+            height: 520px;
+        }
+        
+        #text {
+            color: black;
+            font-size: 21px;
+            height: 50px;
+            position: relative;
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 21px;
+        }
+        
+        #textwrapper {
+            height: 101px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header" style="position:relative;">
+        <div class="sbtitle">
+            <a title="Essential Studio for JavaScript Mobile" class="anchorclass jslogo"></a>
+        </div>
+        <div class="product-naviation hideIt productnav" style="margin-left: 98px;">
+            <div class="not-selected productnav">
+                <div class="products productnav">Desktop</div>
+            </div>
+            <div class="selectedproduct productnav">
+                <div class="products productnav">Mobile</div>
+            </div>
+        </div>
+        <div id="Res-prodnav" class="menulogo productnav"></div>
+    </div>
+    <div id="errorIcon">
+        <div id="support" style="height:190px;">
+        </div>
+        <div id="textwrapper" style="height:100px">
+            <p id="text">
+                Mobile controls are only supported
+                <br />
+                <br />from Internet Explorer Versioned 10 and above.
+            </p>
+        </div>
+    </div>
+    <div id="footer" style="position:fixed;bottom:0;">
+        <div class="footer-text">
+            Copyright © 2001-2017 Syncfusion Inc.
+        </div>
+        <a class="footer-img" href="http://www.syncfusion.com"></a>
+    </div>
+    <script>
+        //To Navigate to other product
+        $("#Res-prodnav").on("click", function () {
+            $(".product-naviation").removeClass("hideIt");
+        });
+        $(document).click(function (e) {
+            if (!$(e.target).hasClass("productnav"))
+                $(".product-naviation").addClass("hideIt");
+        });
+        $(document).delegate(".products", "click", function (e) {
+            viewdemo(e.target.innerHTML);
+        });
+
+        function viewdemo(product) {
+            product = product.toLowerCase();
+            if (window.jsonline) {
+                if (product == "mobile") return;
+                else window.location.href = "http://js.syncfusion.com/demos/web/";
+            } else {
+                if (location.protocol == "file:" || location.toString().indexOf("sfmobilejssamplebrowser") != -1) {
+                    if (product == "mobile") return;
+                    else window.location.href = window.essentialJsUrl;
+                } else {
+                    var text = 'StartDevServer.ashx',
+                        prot = window.location.protocol,
+                        hostname = window.location.host;
+                    if (product == "mobile") return;
+                    else product = "web";
+                    $.ajax({
+                        url: prot + "//" + hostname + "/" + text + "?product=" + product,
+                        success: function (data) {
+                            window.location = data;
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

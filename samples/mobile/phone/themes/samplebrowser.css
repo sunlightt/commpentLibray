@@ -1,0 +1,629 @@
+/** Sample browser font icons **/
+
+@font-face {
+    font-family: 'ejmsbfonts';
+    src: url('sbimages/ejmsbfonts.eot?rzt8lw');
+    src: url('sbimages/ejmsbfonts.eot?rzt8lw#iefix') format('embedded-opentype'), url('sbimages/ejmsbfonts.ttf?rzt8lw') format('truetype'), url('sbimages/ejmsbfonts.woff?rzt8lw') format('woff'), url('sbimages/ejmsbfonts.svg?rzt8lw#ejmsbfonts') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="e-m-sbicon-"],
+[class*=" e-m-sbicon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'ejmsbfonts' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#appList .e-m-lv-active [class^="e-m-sbicon-"]:before,
+#appList .e-m-lv-active [class*=" e-m-sbicon-"]:before,
+#appList .e-m-lv-active .lst-item .text {
+    color: #ffffff;
+}
+
+.e-m-sbicon-accordion:before {
+    content: "\e900";
+}
+
+.e-m-sbicon-angularjs:before {
+    content: "\e901";
+}
+
+.e-m-sbicon-animation:before {
+    content: "\e947";
+}
+
+.e-m-sbicon-autocomplete:before {
+    content: "\e90d";
+}
+
+.e-m-sbicon-barcode:before {
+    content: "\e90e";
+}
+
+.e-m-sbicon-bulletgraph:before {
+    content: "\e948";
+}
+
+.e-m-sbicon-button:before {
+    content: "\e919";
+}
+
+.e-m-sbicon-chart:before {
+    content: "\e91a";
+}
+
+.e-m-sbicon-sparkline:before {
+    content: "\e95a";
+}
+
+.e-m-sbicon-datepicker:before {
+    content: "\e91b";
+}
+
+.e-m-sbicon-dialog:before {
+    content: "\e91c";
+}
+
+.e-m-sbicon-digitalgauge:before {
+    content: "\e91d";
+}
+
+.e-m-sbicon-dropdownlist:before {
+    content: "\e91e";
+}
+
+.e-m-sbicon-grid:before {
+    content: "\e91f";
+}
+
+.e-m-sbicon-knockout:before {
+    content: "\e920";
+}
+
+.e-m-sbicon-lineargauge:before {
+    content: "\e921";
+}
+
+.e-m-sbicon-listview:before {
+    content: "\e922";
+}
+
+.e-m-sbicon-map:before {
+    content: "\e923";
+}
+
+.e-m-sbicon-menu:before {
+    content: "\e924";
+}
+
+.e-m-sbicon-navdrawer:before {
+    content: "\e925";
+}
+
+.e-m-sbicon-progressbar:before {
+    content: "\e951";
+}
+
+.e-m-sbicon-radialgauge:before {
+    content: "\e92b";
+}
+
+.e-m-sbicon-radialmenu:before {
+    content: "\e92c";
+}
+
+.e-m-sbicon-radialslider:before {
+    content: "\e92d";
+}
+
+.e-m-sbicon-rangenavigator:before {
+    content: "\e92e";
+}
+
+.e-m-sbicon-rating:before {
+    content: "\e92f";
+}
+
+.e-m-sbicon-rotator:before {
+    content: "\e930";
+}
+
+.e-m-sbicon-slider:before {
+    content: "\e931";
+}
+
+.e-m-sbicon-tab:before {
+    content: "\e932";
+}
+
+.e-m-sbicon-textbox:before {
+    content: "\e933";
+}
+
+.e-m-sbicon-tileview:before {
+    content: "\e934";
+}
+
+.e-m-sbicon-timepicker:before {
+    content: "\e935";
+}
+
+.e-m-sbicon-toolbar:before {
+    content: "\e936";
+}
+
+.e-m-sbicon-treemap:before {
+    content: "\e937";
+}
+
+.e-m-sbicon-aboutus:before {
+    content: "\e938";
+}
+
+.e-m-sbicon-android:before {
+    content: "\e939";
+}
+
+.e-m-sbicon-apple:before {
+    content: "\e93a";
+}
+
+.e-m-sbicon-back:before {
+    content: "\e93b";
+}
+
+.e-m-sbicon-controls:before {
+    content: "\e93c";
+}
+
+.e-m-sbicon-documentation:before {
+    content: "\e93d";
+}
+
+.e-m-sbicon-drawermenu:before {
+    content: "\e93e";
+}
+
+.e-m-sbicon-feedback:before {
+    content: "\e93f";
+}
+
+.e-m-sbicon-propertiesclose:before {
+    content: "\e940";
+}
+
+.e-m-sbicon-search:before {
+    content: "\e941";
+}
+
+.e-m-sbicon-flat:before {
+    content: "\e942";
+}
+
+.e-m-sbicon-showcasesample:before {
+    content: "\e943";
+}
+
+.e-m-sbicon-viewcode:before {
+    content: "\e944";
+}
+
+.e-m-sbicon-wahtsnew:before {
+    content: "\e945";
+}
+
+.e-m-sbicon-windows:before {
+    content: "\e946";
+}
+
+.button-icon::before {
+    padding: 6px;
+    font-size: 21px;
+    line-height: 40px;
+}
+
+
+/** End Sample browser font icons **/
+
+
+/*Accordian Customization*/
+
+#appList .e-m-acc .e-m-acc-content-wrapper {
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+}
+
+#appList .e-m-acc .e-m-acc-item {
+    text-transform: uppercase;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#appList .e-m-android.e-m-acc .e-m-acc-item {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+#appList .e-m-acc.e-m-ios7 .e-m-acc-item.e-m-state-active,
+#appList .e-m-ios7.e-m-acc .e-m-acc-item.e-m-state-active:before {
+    background: #EFEFF4;
+    color: #777;
+}
+
+#appList .e-m-windows.e-m-acc .e-m-acc-item {
+    font-weight: normal;
+}
+
+#appList .e-m-acc-item:first-child {
+    border-top: 0px;
+}
+
+#controlList {
+    border-top: 0px;
+}
+
+
+/*ListView Customization*/
+
+#appList .e-m-lv-content {
+    font-size: 16px;
+    height: 70px;
+    line-height: 70px;
+}
+
+#controlList span {
+    display: block;
+}
+
+.lst-item {
+    padding: 8px;
+    margin: 0 3px;
+    border-bottom: 1px solid #ccc;
+    height: 60px;
+}
+
+#controlList .e-m-lv li:last-child .lst-item {
+    border-bottom: 0px;
+}
+.lst-item .text {
+    line-height: 60px;
+    font-size: 17px;
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    bottom: 0px;
+    right: 0px;
+    color: #555;
+}
+
+.lst-item span.icon {
+    width: 50px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 12px;
+    line-height: 62px;
+    font-size: 32px;
+    text-align: center;
+    color: #8A8889;
+}
+
+.lst-item span.icon:before {
+    line-height: 60px;
+}
+
+.lst-item .tag.new {
+    width: 65px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #FFB400;
+    height: 23px;
+    top: 20px;
+}
+
+.lst-item .tag.updated {
+    width: 85px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #1EC7C0;
+    height: 23px;
+    top: 20px;
+}
+
+.lst-item .tag.preview {
+    width: 80px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #333D47;
+    height: 23px;
+    top: 20px;
+}
+
+.lst-item .tag {
+    position: absolute;
+    right: 10px;
+    font-size: 11px;
+    line-height: 24px;
+    text-align: center;
+}
+
+
+/*Header Customization*/
+
+#appHeader .e-m-fontimage {
+    font-size: 17px;
+    padding: 4px 9px;
+}
+
+#appHeader.e-m-windows * {
+    color: #777;
+    font-size: 18px;
+}
+
+#appHeader.e-m-android *,
+#appHeader.e-m-ios7 * {
+    color: #fff;
+}
+#appHeader.e-m-windows,
+#appHeader.e-m-flat{
+    border-bottom:1px solid #b2b2b2;
+}
+#appHeader {
+    overflow: visible;
+    padding: 4px 0;
+    z-index: 10010;
+    font-size: 17px;
+}
+
+#appHeader.e-m-ios7 {
+    background: #168ddb none repeat scroll 0 0;
+}
+
+#appHeader.e-m-android {
+    padding-top: 9px;
+    background: #303f9f;
+    box-shadow: none;    
+}
+
+#appHeader.e-m-android .e-m-title-left {
+    padding-top: 18px;
+    font-size: 20px;
+}
+
+#appHeader.e-m-android #search-ac_wrapper {
+    top: 7px;
+}
+
+#appHeader #search-ac_wrapper {
+    bottom: 0;
+    display: none;
+    left: 35px;
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    width: auto;
+}
+
+.e-m-higher #appHeader #search-ac_wrapper {
+    width: 300px;
+    left: auto;
+}
+#appHeader .e-m-flat.e-m-btn.e-m-noborder.e-m-state-default
+{
+    color: #ffffff;
+}
+#appHeader .e-m-title-left {
+    bottom: 0;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    position: absolute;
+    top: 0;
+}
+#appHeader.e-m-flat .e-m-title-left,
+#appHeader.e-m-windows .e-m-title-left
+{
+ padding-top: 10px;
+}
+
+#appHeader #search-ac_wrapper * {
+    background: transparent none repeat scroll 0 0;
+    color: #8a8889;
+    font-size: 15px;
+}
+
+#appHeader #search-ac {
+    background: #fff none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 6px;
+}
+
+#titleText {
+    z-index: 1000;
+}
+
+#search-ac_wrapper {
+    z-index: 1001;
+}
+
+#searchicon,
+#leftMenuBut {
+    z-index: 1002;
+}
+
+#appHeader #search-ac_wrapper .e-m-lv-content {
+    box-shadow: none;
+}
+
+#appHeader #search-ac_wrapper .e-m-list-wrapper {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 8px;
+    box-shadow: 1px 1px 2px 0 #aaa;
+    top: 42px;
+}
+
+#appHeader #search-ac_wrapper .e-m-icon-search::before {
+    top: 13px;
+    left: 6px;
+}
+
+#appHeader .e-m-navbar-text {
+    letter-spacing: 1px;
+    z-index: 1000;
+    margin-left: 43px !important;
+}
+
+
+/*Nav Footer Customization*/
+
+#navFooter .e-m-fontimage {
+    font-size: 17px;
+    padding: 4px 9px;
+    float: right;
+}
+
+#navFooter {
+    padding: 4px 0px;
+    border-top: 1px solid #ccc;
+    background-color: #EFEFF4;
+}
+
+#navFooter * {
+    color: #ccc;
+}
+
+#navFooter .footer-synclogo {
+    display: block;
+    position: absolute;
+    left: 8px;
+    width: 180px;
+    background-image: url(sbimages/footer.png);
+    top: 0px;
+    bottom: 0px;
+    background-position: 0 -41px;
+    background-repeat: no-repeat;
+}
+
+
+/*Nav List Customization*/
+
+#navList span {
+    display: block;
+}
+
+#navList .lst-item {
+    height: 50px;
+    border-bottom: 0;
+}
+
+#navList .lst-item span.icon {
+    left: 0px;
+    line-height: 50px;
+    font-size: 32px;
+}
+
+#navList .lst-item .text {
+    line-height: 50px;
+    left: 50px;
+    font-size: 14px;
+}
+
+#navList .lst-item span.icon:before {
+    line-height: 50px;
+}
+
+#navList.e-m-lv .e-m-lv-active {
+    background-color: #FBFAFA;
+    border-top: 1px solid #ccc;
+    box-shadow: 0px 1px 2px 0px #aaa;
+    z-index: 10009;
+}
+
+
+/*LeftPane Customization*/
+
+#leftPane.e-m-pane {
+    background: #fff;
+}
+
+.e-m-higher #leftPane.e-m-pane {
+    top: 45px;
+}
+
+.e-m-lowser #leftPane.e-m-pane {
+    top: 0px;
+}
+
+
+/*App Content Customization*/
+
+#appContent {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.page,
+.container, #appNoScroll .page-container,#appNoScroll .sample-page {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.adjust-top-tab {
+    top: 61px;
+}
+
+.e-m-android .adjust-top-tab {
+    top: 45px;
+}
+
+.e-m-ios7 .adjust-top-tab {
+    top: 58px;
+}
+
+.e-m-windows .adjust-top-tab {
+    top: 56px;
+}
+
+.e-m-flat .adjust-top-tab {
+    top: 47px;
+}
+
+
+/*Samples Tab Customization*/
+
+#samplesTab .e-m-tab-item {
+    width: 125px;
+}
+
+#samplesTab.e-m-android .e-m-tab-item.e-m-state-active {
+    border-bottom: 3px solid #ec407a;
+}
+
+
+
+/*About Page Customization*/
+
+#aboutcontent {
+    padding: 10px;
+}
+
+#aboutcontent .title {
+    color: blue;
+}

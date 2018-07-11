@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+<body>
+    <div class="sample-control chart bubble">
+        <div align="center">
+            <div>
+                <div id="container_bubble" data-role="ejmchart">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function ChartLoad() {
+            $("#container_bubble").ejChart({
+
+                primaryXAxis:
+{
+    range: { min: 60, max: 100, interval: 5 },
+    font: { size: '10px' }
+},
+                primaryYAxis:
+{
+    labelFormat: '{value}',
+    range: { min: -2, max: 16, interval: 2 },
+    font: { size: '10px' }
+},
+                series: [
+  {
+      points: [
+          { x: 92.2, y: 7.8, size: 1.347, fill: '#E94649', text: 'China' }, { x: 74, y: 6.5, size: 1.241, fill: '#F6B53F', text: 'India' }, { x: 90.4, y: 6.0, size: 0.238, fill: '#6FAAB0', text: 'Indonesia' }, { x: 99.4, y: 2.2, size: 0.312, fill: '#C4C24A', text: 'US' }, { x: 88.6, y: 1.3, size: 0.197, fill: '#FB954F', text: 'Brazil' }, { x: 54.9, y: 3.7, size: 0.177, fill: '#D9CEB2', text: 'Pakistan' },
+          { x: 99, y: 0.7, size: 0.0818, fill: '#FF8D8D', text: 'Germany' }, { x: 72, y: 2.0, size: 0.0826, fill: '#69D2E7', text: 'Egypt' }, { x: 99.6, y: 3.4, size: 0.143, fill: '#E27F2D', text: 'Russia' }, { x: 99, y: 0.2, size: 0.128, fill: '#6A4B82', text: 'Japan' }, { x: 86.1, y: 4.0, size: 0.115, fill: '#F6B53F', text: 'Mexico' }, { x: 92.6, y: 6.6, size: 0.096, fill: '#C4C24A', text: 'Philippines' },
+          { x: 61.3, y: 14.5, size: 0.162, fill: '#FF8D8D', text: 'Nigeria' }, { x: 56.8, y: 6.1, size: 0.151, fill: '#69D2E7', text: 'Bangladesh' }
+      ],
+      enableAnimation: false,
+      tooltip: { visible: true },
+      name: 'pound',
+      type: 'bubble',
+      opacity: 0.7
+  },
+                ],
+                canResize: true,
+                title: { text: 'World Countries Details', font: { size: '15px' } },
+                legend: { visible: false }
+            });
+        }
+    </script>
+</body>
+</html>

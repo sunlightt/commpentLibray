@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+<body>
+    <div class="sample-control groupbutton button">
+        <div align="center" class="groupbtncenter">
+            <div data-role="ejmgroupbutton" data-ej-touchend="_click" data-ej-selecteditemindex="0">
+                <label>
+                    <input type="radio" name="options">
+                    Chocolate
+                </label>
+                <label>
+                    <input type="radio" name="options">
+                    Ice cream
+                </label>
+                <label>
+                    <input type="radio" name="options">
+                    Cookies
+                </label>
+            </div>
+        </div>
+
+        <div id="grpbuttonlist">
+            <div id="content1">
+                <ul data-role="ejmlistview" id="gblistbox">
+                    <li>Cadbury</li>
+                    <li>Bonnat Chocolates</li>
+                    <li>Barry Callibaut</li>
+                    <li>Fazer</li>
+                    <li>Garoto</li>
+                    <li>Mars, Incorporated</li>
+                </ul>
+            </div>
+            <div id="content2">
+                <ul data-role="ejmlistview" id="gblistbox1">
+                    <li>Baskin-Robbins</li>
+                    <li>Amul</li>
+                    <li>Dairy Queen</li>
+                    <li>Edy's</li>
+                    <li>Milko</li>
+                </ul>
+            </div>
+            <div id="content3">
+                <ul data-role="ejmlistview" id="gblistbox2">
+                    <li>Chips Ahoy</li>
+                    <li>Duncan Hines</li>
+                    <li>Famous Amos</li>
+                    <li>Jaffa Cakes</li>
+                    <li>Keebler</li>
+                    <li>Nestle</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#content2").hide();
+            $("#content3").hide();
+        });
+        function _click(args) {
+            ele1 = App.activePage.find("#content1");
+            ele2 = App.activePage.find("#content2");
+            ele3 = App.activePage.find("#content3");
+            if (args.text == "Chocolate") {
+                ele2.hide();
+                ele3.hide();
+                ele1.show();
+            }
+            else if (args.text == "Ice cream") {
+                ele1.hide();
+                ele3.hide();
+                ele2.show();
+            }
+            else if (args.text == "Cookies") {
+                ele1.hide();
+                ele2.hide();
+                ele3.show();
+            }
+        }
+    </script>
+</body>
+</html>

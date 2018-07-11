@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../content/ejthemes/default-theme/ej.web.all.min.css" rel="stylesheet" type="text/css" />
+    <link href="../content/default.css" rel="stylesheet" />
+    <link href="../content/default-responsive.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+       <script src="../scripts/jquery-1.11.3.min.js" type="text/javascript"></script>
+      <!--<![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="../scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <!--<![endif]-->
+    <script src="../scripts/pivotgrid.datasource.js" type="text/javascript"></script> 
+    <script src="../scripts/ej.web.all.min.js" type="text/javascript"></script>
+    <script src="../scripts/cultures/ej.culture.fr-FR.min.js"></script>
+    <script src="../scripts/cultures/ej.culture.es-ES.min.js"></script>
+    <script src="../scripts/properties.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area" style="width:100% ;min-width: 650px">
+                <div class="control">
+                    <div id="PivotGrid1" style="width: 50%; height: 650px; overflow: auto; float: left; margin:20px 0 0 20px;">
+                    </div>
+                    <div id="PivotSchemaDesigner1" style="height:300px;margin-top:20px; float:right">
+                    </div>
+                    </div>
+                </div>
+            <div id="sampleProperties">
+                <div class="prop-grid">
+                    <div class="row">
+                        <div class="col-md-3" style="width:100px"">
+                            Data Source
+                        </div>
+                        <div class="col-md-3">
+                            <table>
+                                <tr>
+                                    <td style="float:left; padding-right:15px">
+                                        <input type="radio" name="datasource" id="rdbRelational" checked /><label for="rdbRelational" class="radioBtnLabel">Relational</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="datasource" id="rdbOlap" /><label for="rdbOlap" class="radioBtnLabel">OLAP</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-md-3" style="width:100px"">
+                            Mode
+                        </div>
+                        <div class="col-md-3">
+                            <table>
+                                <tr>
+                                    <td style="float:left; padding-right:35px">
+                                        <input type="radio" name="dataMode" id="rdbClient" checked /><label for="rdbClient" class="clslab">Client</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="dataMode" id="rdbServer" /><label for="rdbServer" class="clslab">Server</label>
+                                    </td>
+                                </tr>
+                            </table>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" style="width:100px">
+                            Select Type
+                        </div>
+                        <div class="col-md-3">
+                        <div class="languageDropdown">
+                            <select id="languageList">
+                                <option value="en-US">en-US</option>
+                                <option value="fr-FR">fr-FR</option>
+                                <option value="es-ES">es-ES</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                        <button id="ApplyBtn">Apply</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var btnTarget, relationalRadioBtnObj, olapRadioBtnObj, rdbClient, rdbServer, languageListDropdown;
+
+        var pivotdataSource = {
+            data: pivot_dataset, cube: "",
+            rows: [{ fieldName: "Country", fieldCaption: "Country" }, { fieldName: "State", fieldCaption: "State" }],
+            columns: [{ fieldName: "Product", fieldCaption: "Product" }],
+            values: [{ fieldName: "Amount", fieldCaption: "Amount" }, { fieldName: "Quantity", fieldCaption: "Quantity" }],
+            filters: []
+        };
+        $(function () {
+            $("#rdbRelational,#rdbOlap, #rdbClient, #rdbServer").ejRadioButton();
+            $("#languageList").ejDropDownList({
+                width: "80px"
+            });
+            languageListDropdown = $('#languageList').data("ejDropDownList");
+            languageListDropdown.selectItemByText(languageListDropdown.items[0].innerHTML);
+            $("#sampleProperties").ejPropertiesPanel();
+
+            $("#PivotGrid1").ejPivotGrid({
+                dataSource: pivotdataSource,
+                pivotTableFieldListID: "PivotSchemaDesigner1",
+                enableGroupingBar: true
+            });
+            $("#PivotSchemaDesigner1").ejPivotSchemaDesigner();
+
+            $("#ApplyBtn").ejButton({
+                roundedCorner: true,
+                size: "small",
+                type: ej.ButtonType.Button,
+                click: "ApplyChanges"
+            });
+            relationalRadioBtnObj = $('#rdbRelational').data("ejRadioButton");
+            olapRadioBtnObj = $('#rdbOlap').data("ejRadioButton"); rdbClient = $('#rdbClient').data("ejRadioButton"); rdbServer = $('#rdbServer').data("ejRadioButton");
+        });
+
+        function onLoad(args) {
+            if (args.model.dataSource.data == null)
+                args.model.dataSource.data = pivot_dataset;
+        }
+
+        function ApplyChanges(args) {
+            var pivotGrid = $('.e-pivotgrid').data("ejPivotGrid"), pivotSchemaDesigner = $('.e-pivotschemadesigner').data("ejPivotSchemaDesigner"), languageID;
+            languageID = languageListDropdown._currentText == "fr-FR" ? "1036" : languageListDropdown._currentText == "es-ES" ? "1034" : "1033"
+            pivotSchemaDesigner._destroy();
+            pivotGrid.locale(languageListDropdown._currentText);
+            var Date, Country, State, Product, Amount, Quantity = "";
+            //Locale for Relation DataSource
+            if (languageListDropdown._currentText == "fr-FR") {
+                Country = "Pays";
+                State = "Etat";
+                Product = "Produit";
+                Amount = "Montant";
+                Quantity = "Quantité";
+                Date = "date";
+            }
+            else if (languageListDropdown._currentText == "es-ES") {
+                Country = "País";
+                State = "Estado";
+                Product = "Producto";
+                Amount = "Cantidad";
+                Quantity = "Cantidad";
+                Date = "Fecha";
+            }
+            else {
+                Country = "Country";
+                State = "State";
+                Product = "Product";
+                Amount = "Amount";
+                Quantity = "Quantity";
+                Date = "Date";
+            }
+
+            var pivotdataSource = {
+                data: pivot_dataset, cube: "",
+                rows: [{ fieldName: "Country", fieldCaption: Country }, { fieldName: "State", fieldCaption: State }],
+                columns: [{ fieldName: "Product", fieldCaption: Product }],
+                values: [{ fieldName: "Amount", fieldCaption: Amount }, { fieldName: "Quantity", fieldCaption: Quantity }],
+                filters: []
+            };
+            var olapDataSource = {
+                data: "http://bi.syncfusion.com/olap/msmdpump.dll;Locale Identifier= " + languageID + ";",
+                catalog: "Adventure Works DW 2008 SE",
+                cube: "Adventure Works",
+                rows: [{ fieldName: "[Date].[Fiscal]" }],
+                columns: [{ fieldName: "[Customer].[Customer Geography]" }],
+                values: [{ measures: [{ fieldName: "[Measures].[Internet Sales Amount]" }], axis: "columns" }],
+                filters: []
+            };
+
+            $(".e-pivotgrid").remove();
+            $("#PivotSchemaDesigner1").remove();
+            var gridPanel = ej.buildTag("div#PivotGrid1", "", { "display": "block" })[0].outerHTML;
+            var gridSchemaPanel = ej.buildTag("div#PivotSchemaDesigner1", "", { height: "650px", "display": "block" })[0].outerHTML;
+            $(gridPanel).appendTo(".cols-sample-area");
+            $(gridSchemaPanel).appendTo(".cols-sample-area");
+
+            if (rdbClient.model.checked) {
+                $("#PivotGrid1").ejPivotGrid({
+                    dataSource: relationalRadioBtnObj.model.checked ? pivotdataSource : olapRadioBtnObj.model.checked ? olapDataSource : pivotdataSource, pivotTableFieldListID: "PivotSchemaDesigner1",
+                    enableGroupingBar: true, locale: languageListDropdown._currentText
+                });
+            }
+            else {
+                pivotGrid.model.dataSource = { data: null, cube: "" };
+                pivotGrid.model.operationalMode = "servermode";
+                $("#PivotGrid1").ejPivotGrid({
+                    url: window.baseurl + (relationalRadioBtnObj.model.checked ? "api/PivotGrid/Relational" : "api/PivotGrid/Olap"),serviceMethodSettings : {initialize: "Initialize", drillDown: "Drill", nodeStateModified: "ModifyNodeState",removeButton:"RemoveButton", nodeDropped: "DropNode", memberExpand: "ExpandMember" }, pivotTableFieldListID: "PivotSchemaDesigner1",
+                    enableGroupingBar: true, customObject: { Language: languageListDropdown._currentText }, locale: languageListDropdown._currentText
+                });
+            }
+            if (olapRadioBtnObj.model.checked && rdbClient.model.checked)
+                $("#PivotSchemaDesigner1").ejPivotSchemaDesigner({ olap: { showKPI: false, showNamedSets: true }, locale: languageListDropdown._currentText });
+            else
+                $("#PivotSchemaDesigner1").ejPivotSchemaDesigner({ locale: languageListDropdown._currentText, serviceMethods: { initialize: "Initialize", drillDown: "Drill", nodeStateModified: "ModifyNodeState", nodeDropped: "DropNode", memberExpand: "ExpandMember" } });
+        }
+
+        //Locale for PivotGrid
+    ej.PivotGrid.Locale['fr-FR'] = {
+		Warning: "Attention",
+        ToolTipRow: 'Rangée',
+        ToolTipColumn: 'Colonne',
+        ToolTipValue: 'Valeur',
+        DragFieldHere: "champ de glisser ici",
+        ColumnArea: "Déposez la colonne ici",
+        RowArea: "Déposez ligne ici",
+        ValueArea: "Les valeurs Drop ici",
+        Measures: "Les mesures",
+        NoValue: "Aucune valeur",
+        Expand: "Développer",
+		OK: "D'accord",
+        Cancel: "Annuler",
+        Collapse: "Effondrement",
+        AddToFilter: "Ajouter au filtre",
+        AddToRow: "Ajouter à la rangée",
+        AddToColumn: "Ajouter à la colonne",
+        AddToValues: "Ajouter à la valeur",
+        CalculatedField: "Champ Calculé",
+        NoRecordsToDisplay: "Aucun enregistrement à afficher.",
+        MultipleItems: "Plusieurs éléments",
+        All: "Tous les",
+        Search: "Recherchez",
+        GroupingBarAlertMsg: "Le champ que vous déplacez ne peut être placé dans cette zone du rapport"
+    };
+    ej.PivotGrid.Locale['es-ES'] = {
+		Warning: "Advertencia",
+        ToolTipRow: 'Herramienta Sugerencia Fila',
+        ToolTipColumn: 'Columna sobre herramientas',
+        ToolTipValue: 'Herramienta Sugerencia Valor',
+        DragFieldHere: "campo de arrastre aquí",
+        ColumnArea: "Caída de la columna aquí",
+        RowArea: "Caída de fila aquí",
+        ValueArea: "valores de caída de aquí",
+        Measures: "medidas",
+        NoValue: "Aucune valeur",
+        Expand: "Développer",
+		OK: "Deacuerdo",
+        Cancel: "Cancelar",
+        Collapse: "Effondrement",
+        AddToFilter: "Agregar al filtro",
+        AddToRow: "Añadir a la fila",
+        AddToColumn: "Añadir a la columna",
+        AddToValues: "Añadir a los valores",
+        CalculatedField: "Campo Calculado",
+        NoRecordsToDisplay: "No hay registros que mostrar.",
+        MultipleItems: "Varios elementos",
+        All: "Todos",
+        Search: "Buscar",
+        GroupingBarAlertMsg: "Le champ que vous ne peut être déplacez placé dans cette zona du relación"
+    };
+
+    //Locale for PivotSchemadesigner
+    ej.PivotSchemaDesigner.Locale["fr-FR"] = {
+        ClearFilter: "Effacer le filtre",
+        SelectField: "Select Field",
+        Measures: "Les mesures",
+        Warning: "Attention",
+        AlertMsg: "Le champ que vous déplacez ne peut être placé dans cette zone du rapport",
+        Measures: "Les mesures",
+        Goal: "Objectif",
+        Status: "statut",
+        Trend: "Tendance",
+        Value: "valeur",
+        AddToFilter: "Ajouter au filtre",
+        AddToRow: "Ajouter à la rangée",
+        AddToColumn: "Ajouter à la colonne",
+        AddToValues: "Ajouter à la valeur",
+        PivotTableFieldList: "Liste des champs PivotTable",
+        ChooseFieldsToAddToReport: "Choisissez les champs à ajouter à signaler :",
+        DragFieldBetweenAreasBelow: "champs de glisser entre les zones ci-dessous:",
+        ReportFilter: "Rapport Filtre",
+        ColumnLabel: "Colonne Étiquette",
+        RowLabel: "Label Row",
+        Values: "Valeurs",
+        DeferLayoutUpdate: "Différer la mise en page de mise à jour",
+        Update: "Mettre à jour",
+        OK: "D'accord",
+        Cancel: "Annuler",
+        Close: "Fermer",
+        Search: "Recherchez"
+    };
+
+    ej.PivotSchemaDesigner.Locale["es-ES"] = {
+        ClearFilter: "ClearFilter",
+        SelectField: "SelectField",
+        Measures: "medidas",
+        Warning: "Advertencia",
+        AlertMsg: "Le champ que vous ne peut être déplacez placé dans cette zona du relación",
+        Measures: "medidas",
+        Goal: "Gol",
+        Status: "Estado",
+        Trend: "Tendencia",
+        Value: "Valor",
+        AddToFilter: "Agregar al filtro",
+        AddToRow: "Añadir a la fila",
+        AddToColumn: "Añadir a la columna",
+        AddToValues: "Añadir a los valores",
+        PivotTableFieldList: "Liste des champs PivotTable",
+        ChooseFieldsToAddToReport: "Elija los campos para añadir a reportar :",
+        DragFieldBetweenAreasBelow: "Arrastre los campos entre las áreas a continuación:",
+        ReportFilter: "Filtro de informe",
+        ColumnLabel: "columna Etiqueta",
+        RowLabel: "fila Label",
+        Values: "Valores",
+        DeferLayoutUpdate: "Defer Disposición de actualización",
+        Update: "Actualizar",
+        OK: "Deacuerdo",
+        Cancel: "Cancelar",
+        Close: "Cerca",
+        Search: "Buscar"
+    };
+    </script>
+    <style>
+        body {
+            overflow: auto !important;
+        }
+
+        .row .cols-sample-area {
+            overflow: auto !important;
+            width: 100%;
+        }
+
+        #PivotGrid1 {
+            height: 350px;
+            width: 50%;
+            overflow: auto;
+            float: left;
+            margin: 20px 0 0 20px;
+        }
+
+        .e-pivotschemadesigner {
+            width: 40% !important;
+            float: right;
+        }
+
+        .languageDropdown {
+            float: left;
+            margin-left: -6px;
+        }
+
+        #drpdwn_input_wrapper {
+            width: 60px;
+        }
+
+        .row .cols-prop-area {
+            min-height: 150px;
+            width: 40%;
+            float: left;
+        }
+
+        .radioBtnLabel {
+            margin-left: 5px;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head >
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Essential Studio for MobileJS" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <link rel="shortcut icon" href="themes/sampleimages/favicon.ico"> 
+    <script>
+          function isIE() {
+            var myNav = navigator.userAgent.toLowerCase();
+            return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+        }
+        
+        if (typeof isIE() == "number" && isIE() <= 9)
+            location.replace("error.html");
+        
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="scripts/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="scripts/samplelist.js"></script>
+    <script type="text/javascript" src="scripts/jsonData.js"></script>
+    <script type="text/javascript" src="scripts/treemapdata.js"></script>
+</head>
+
+<body>
+    <div data-role="ejmsplitpane" id="splitView" data-ej-leftpane-width="240px" data-ej-leftpane-showontablet="false" data-ej-enableswipe="false">
+        <div data-ej-pane="left" id="leftPane">
+            <div data-role="ejmlistview" id="navList" data-ej-templateid="nav-list-template" data-ej-selectedindex="0" data-ej-persistselection="true" data-ej-datasource="window.menuList" data-ej-query="ej.Query()" data-ej-select="onNavListSelect"></div>
+            <div data-role="ejmnavigationbar" id="navFooter" data-ej-position="bottom">
+                <a data-ej-cssclass="e-m-navbar-left" id="left" data-role="ejmactionlink" data-ej-contenttype="image" data-ej-showborder="false" data-ej-imageclass="e-m-fontimage e-m-icon-comments"></a>
+                <a data-ej-cssclass="e-m-navbar-right" id="right" data-role="ejmactionlink" data-ej-contenttype="image" data-ej-showborder="false" data-ej-imageclass="e-m-fontimage e-m-icon-text"></a>
+                <span class="e-m-navbar-text e-m-title-left footer-synclogo"></span>
+            </div>
+        </div>
+        <div data-ej-pane="content" id="contentPane">
+            <div data-role="ejmnavigationbar" id="appHeader" data-ej-position="top">
+                <a data-ej-cssclass="e-m-left" id="leftMenuBut" data-role="ejmactionlink" data-ej-contenttype="image" data-ej-showborder="false" data-ej-imageclass="button-icon e-m-sbicon-drawermenu" data-ej-touchend="onLeftButtonTap"></a>
+                <span id="titleText" class="e-m-text e-m-title-left">Syncfusion Essential JS</span>
+                <input id="search-ac" class="ac-search" />
+                <a data-ej-cssclass="e-m-navbar-right ac-search" id="searchicon" data-role="ejmactionlink" data-ej-contenttype="image" data-ej-showborder="false" data-ej-imageclass="button-icon e-m-sbicon-search" data-ej-touchend="onSearchButtonTap"></a>
+            </div>
+            <div id="appContent">
+                <div id="contentPage" class="page sbpage">
+                    <div id="appList" class="app-list">
+                        <div data-role="ejmscrollpanel" id="appListScroll">
+                            <ul data-role="ejmaccordion" id="controlList" data-ej-expandall="true" data-ej-items="window.sampleslist" data-ej-expand="onAccSizeChange" data-ej-collapse="onAccSizeChange" data-ej-headericon-active= "e-m-icon-forward"></ul>
+                        </div>
+                    </div>
+                    <div id="sampleViewer" class="sample-view">
+                    </div>
+                </div>
+                <div id="aboutPage" class="page sbpage" style="display: none;">
+                    <div id="aboutcontent">
+                        <div class="title">JavaScript Mobile </div>
+                        <div class="content">
+                            Essential Studio for Javascript Mobile contains all the controls you need to build line-of-business mobile applications including charts,gauges,bar codes,editors and much more.
+                            <br>
+                            <br>
+                            <div class="versiontext">Version 15.3.0.26 </div>
+                            <br>
+                            <div class="contact">Contact Us </div>
+                            <div class="anchor"><a href="http://www.syncfusion.com" data-ej-appajax="false">http://www.syncfusion.com</a></div>
+                            <div class="anchor"><a href="mailto:support@syncfusion.com" data-ej-appajax="false">support@syncfusion.com</a></div>
+                            <br>
+                            <div class="bottom">1-888-9DOTNET </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script id="ctrl-list-template" type="text/x-jsrender">
+        <span class="lst-item">
+            <span class="icon {{>imageClass}}"></span>
+        <span class="text">{{>text}}</span>
+        <span class="tag {{:~toLowerCase(tag)}}">{{:~toUpperCase(tag)}}</span>
+        </span>
+    </script>
+
+    <script id="nav-list-template" type="text/x-jsrender">
+        <span class="lst-item">
+            <span class="icon {{>imageClass}}"></span>
+        <span class="text">{{>text}}</span>
+        <span class="tag {{>tag}}">{{:~toLowerCase(tag)}}</span>
+        </span>
+    </script>
+</body>
+<script type="text/javascript" src="scripts/SampleBrowser.js"></script>
+
+</html>

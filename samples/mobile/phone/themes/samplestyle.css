@@ -1,0 +1,772 @@
+/*common styles*/
+
+.sample-control {
+    padding: 10px;
+}
+
+.container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+
+/*Button Specific*/
+
+.default.button {
+    padding: 10px;
+}
+
+    .default.button table {
+        vertical-align: middle;
+        border: 1px solid #ccc;
+    }
+
+    .default.button td {
+        border-bottom: 1px solid #ccc;
+        border-spacing: 0px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+
+/*Radiobutton Sample Specific*/
+
+.default.radiobutton table {
+    vertical-align: middle;
+}
+
+
+/*Animation Sample Specific*/
+
+.animation #image {
+    height: 230px;
+    width: auto;
+    background: url("sampleimages/animation/1.jpg");
+    background-repeat:no-repeat;    
+    background-size:contain;
+    background-position:center center;
+}
+
+.animation .ani-control {
+    width: 310px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.animation .rw {
+    margin-bottom: 10px;
+}
+
+/*Tree Map*/
+
+.control-page.TreeMap #sample{
+ min-height: 440px;   
+}
+
+/*Textbox*/
+
+.sample-control.textbox label {
+    text-align: left;
+}
+
+    .sample-control.textbox label.error {
+        color: #ff0000;
+    }
+
+.sample-control.textbox label,
+.sample-control.timepicker.format label {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+
+/*End Textbox*/
+
+
+/** Timepicker **/
+
+.sample-control.timepicker .format-wrapper .format-24 {
+    margin-bottom: 20px;
+}
+
+
+/** End Timepicker **/
+
+
+/** Digital Gauge **/
+
+.sample-control.digitalgauge .digital-frame {
+    background-image: url('sampleimages/digitalgauge/frame.png');
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0px auto;
+    display: table;
+}
+
+
+/** End Digital Gauge **/
+
+
+/** Accordion **/
+
+.sample-control.default.accordion .e-m-android .name-panel,
+.sample-control.default.accordion .e-m-android .time-panel {
+    color: #303f9f;
+}
+
+.sample-control.default.accordion .e-m-windows .name-panel,
+.sample-control.default.accordion .e-m-windows .time-panel {
+    color: #ADC8E1;
+}
+
+.sample-control.default.accordion .e-m-flat .name-panel,
+.sample-control.default.accordion .e-m-flat .time-panel {
+    color: #dd7b10;
+}
+
+.sample-control.default.accordion .time-panel {
+    float: right;
+    color: #287bce;
+    font-weight: bold;
+}
+
+.sample-control.default.accordion .content-panel {
+    font-size: 14px;
+}
+
+.sample-control.default.accordion .name-panel {
+    font-size: 15px;
+    font-weight: bold;
+    color: #287bce;
+    padding-bottom: 5px;
+}
+
+.sample-control.default.accordion .message-title {
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.sample-control.default.accordion .text-panel {
+    padding-bottom: 5px;
+}
+
+.sample-control.default.accordion .border-panel {
+    border-bottom-width: 1px;
+    border-bottom-color: #C0C0C0;
+    border-bottom-style: solid;
+    padding-top: 5px;
+}
+
+
+/** End Accordio **/
+
+
+/***  Splitpane Start   ***/
+
+.default.splitpane #userimg {
+    background-image: url("sampleimages/splitpane/brooke.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    height: 80px;
+    margin: 0 auto;
+    width: 80px;
+}
+
+.default.splitpane #username {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.default.splitpane #list .e-m-lv {
+    background-color: white;
+}
+
+.default.splitpane #list .e-m-lv-item {
+    border-bottom: 1px solid #a5a5a5;
+    padding: 5px 0px;
+}
+
+.default.splitpane #splitHeader .e-m-navbar-text {
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.default.splitpane .lst-time {
+    color: darkblue;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+}
+
+.default.splitpane .e-m-lv-active .item-lst {
+    color: #fff;
+}
+
+.default.splitpane .item-lst {
+    color: #333;
+    display: block;
+    font-family: Helvetica Neue, Helvetica;
+    font-size: 14px;
+    min-height: 68px;
+    position: relative;
+}
+
+    .default.splitpane .item-lst span {
+        display: block;
+    }
+
+.default.splitpane .lst-ima {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 5;
+    width: 65px;
+}
+
+.default.splitpane .lst-content {
+    bottom: 0;
+    left: 66px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.default.splitpane .lst-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.default.splitpane .lst-des {
+    font-size: 12px;
+    margin-top: 3px;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.default.splitpane .lst-sub {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.default.splitpane .opt-img {
+    width: 38px;
+    left: 0;
+}
+
+.default.splitpane .opt-lst {
+    height: 47px;
+    display: block;
+    border-bottom: 1px solid #ccc;
+    padding-top: 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+    .default.splitpane .opt-lst span {
+        display: block;
+        color: #333;
+        letter-spacing: 1px;
+    }
+
+.default.splitpane .e-m-lv-active .opt-lst span {
+    color: #fff;
+}
+
+.default.splitpane .opt-name {
+    padding-top: 10px;
+}
+
+.default.splitpane .opt-content {
+    position: absolute;
+    left: 36px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 5px;
+}
+
+.default.splitpane .opt-img img {
+    background-repeat: no-repeat;
+    bottom: 7px;
+    display: block;
+    height: 51px;
+    padding: 7px;
+    position: relative;
+    width: 45px;
+}
+
+.default.splitpane #contentscroll {
+    background: #fff;
+}
+
+
+.default.splitpane .nav-icon::before {
+    font-size: 22px;
+}
+
+.default.splitpane .e-m-windows.nav-icon::before {
+    color: #000;
+}
+
+default.splitpane .e-m-android.nav-icon {
+    position: absolute;
+    left: 4px;
+    top: 13px;
+}
+
+.default.splitpane .e-m-windows.nav-icon, .default.splitpane .e-m-flat.nav-icon {
+    position: absolute;
+    left: 5px;
+}
+
+.default.splitpane .e-m-flat.nav-icon {
+    top: 11px;
+}
+
+.default.splitpane .e-m-android.nav-icon::before {
+    color: #fff;
+    font-size: 32px;
+}
+
+.default.splitpane .e-m-flat.nav-icon::before {
+    color: #fff;
+}
+
+.default.splitpane .e-m-ios7.nav-icon::before {
+    color: #2883f2;
+}
+
+.default.splitpane .e-m-ios7.nav-icon {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+}
+
+/***  End SplitPane   ***/
+
+
+/***ProgressBar***/
+
+.progressbar.default {
+    margin: 20px;
+}
+
+.progressbar.event {
+    margin: 20px;
+}
+
+
+/****End Progressbar*****/
+
+
+/** Toolbar **/
+
+.toolbar #toolbar-background {
+    background-image: url('sampleimages/toolbar/toolbar-bg.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+/** End Toolbar **/
+
+
+/** Rotator **/
+
+.sample-control.databinding.rotator.page .e-m-rotator .e-m-sv-container .e-m-item {
+    height: 80%;
+}
+
+.sample-control.default.rotator.page .e-m-rotator .e-m-abs .e-m-sv-pager {
+    height: 10px;
+    width: 10px;
+}
+
+.sample-control.databinding.rotator.page .e-m-rotator .e-m-abs .e-m-sv-pager {
+    height: 10px;
+    width: 10px;
+}
+
+.image-bird {
+    background-image: url("sampleimages/rotator/bird.jpg");
+}
+
+.image-bread {
+    background-image: url("sampleimages/rotator/bread.jpg");
+}
+
+.image-card {
+    background-image: url("sampleimages/rotator/card.jpg");
+}
+
+.image-green {
+    background-image: url("sampleimages/rotator/green.jpg");
+}
+
+.image-nature {
+    background-image: url("sampleimages/rotator/nature.jpg");
+}
+
+.image-rose {
+    background-image: url("sampleimages/rotator/rose.jpg");
+}
+
+.image-sculpture {
+    background-image: url("sampleimages/rotator/sculpture.jpg");
+}
+
+.image-seaview {
+    background-image: url("sampleimages/rotator/seaview.jpg");
+}
+
+.image-snow {
+    background-image: url("sampleimages/rotator/snow.jpg");
+}
+
+.image-snowfall {
+    background-image: url("sampleimages/rotator/snowfall.jpg");
+}
+
+.image-tablet {
+    background-image: url("sampleimages/rotator/tablet.jpg");
+}
+
+.image-wheat {
+    background-image: url("sampleimages/rotator/wheat.jpg");
+}
+
+
+/** End Rotator **/
+
+
+/** TileView **/
+
+.gallery.tileview {
+    text-align: center;
+}
+
+    .gallery.tileview .e-m-tile-medium {
+        float: none;
+        display: inline-block;
+    }
+
+.tile-grop-title {
+    text-align: left;
+    font-weight: bolder !important;
+    display: block;
+    padding: 10px;
+}
+
+ #tileviewscroll .e-m-tile.e-m-tile-medium {
+   float: none;
+   display: inline-block; 
+ }
+.default.tile.bg {
+    background: #ffffff;
+}
+
+.e-m-tile-caption-text.e-m-caption-outer::before {
+    color: white;
+}
+
+
+/** End TileView **/
+
+
+/** Rating **/
+
+.rating-google {
+    background-image: url("sampleimages/rating/google.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 130px;
+    margin-top: 10px;
+}
+
+.rating-child {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.rating-default {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/** End Rating **/
+
+
+/* Menu */
+
+
+.sample-control.menu.default,
+.sample-control.menu.template, #toolbar_menu {
+    text-align: center;
+}
+
+    .sample-control.menu.template .e-m-menutemplate, #toolbar_menu .e-m-menutemplate {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .sample-control.menu.template .facebook,
+    .sample-control.menu.template .twitter,
+    .sample-control.menu.template .pinterest, #toolbar_menu .tempimage {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 25px;
+        width: 25px;
+        position: relative;
+        display: inline-block;
+        top: 7px;
+        left: -10px;
+    }
+
+    .sample-control.menu.template .text, #toolbar_menu .templatetext {
+        display: inline-block;
+    }
+
+    .sample-control.menu.template .facebook, #toolbar_menu .facebook {
+        background-image: url("sampleimages/menu/fb-logo.png");
+    }
+
+    .sample-control.menu.template .twitter, #toolbar_menu .twitter {
+        background-image: url("sampleimages/menu/twitter.png");
+    }
+
+    .sample-control.menu.template .pinterest, #toolbar_menu .pinterest {
+        background-image: url("sampleimages/menu/pinterest.png");
+    }
+
+    .sample-control.menu.template .sampleimagesrc {
+        background-image: url("sampleimages/menu/snow.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 300px;
+        position: relative;
+        top: 21px;
+    }
+
+/* End Menu */
+
+
+/*Radial Slider*/
+
+#imagezoom {
+    background-image: url("sampleimages/radialslider/green.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50% auto;
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    margin-top: 25px;
+}
+
+.radialslider.default {
+    margin-top: 10px;
+}
+
+#defaultradialslider {
+    z-index: 54;
+}
+
+
+/* End Radial Slider*/
+
+
+/* Dropdown List*/
+
+/* End Dropdown List*/
+
+
+/** Radiobutton and Checkbox**/
+
+.sample-control.button .radiochecktitle {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+/*BarCode Start*/
+
+.sample-control.barcode > div {
+    margin: auto;
+}
+
+
+/*BarCode End*/
+
+
+/*Slider Start*/
+
+.sample-control.slider {
+    margin: 28px;
+    color: #555;
+}
+
+    .sample-control.slider.default .sb-slidelabel {
+        float: right;
+        position: relative;
+        right: 29px;
+    }
+
+    .sample-control.slider .sb-header {
+        color: #2883f2;
+        font-size: 20px;
+    }
+
+    .sample-control.slider.default .sb-emi {
+        position: relative;
+        top: 20px;
+        font-style: italic;
+    }
+
+    .sample-control.slider.rangeslider .sb-maxlabel {
+        float: right;
+        position: relative;
+        right: 26px;
+    }
+
+    .sample-control.slider.rangeslider .sb-minlabel {
+        float: left;
+        position: relative;
+        left: 18px;
+    }
+
+
+/*Slider End*/
+
+
+/*AutoComplete start*/
+
+.sample-control.autocomplete {
+    min-height: 225px;
+}
+
+
+/*AutoComplete end*/
+
+
+/*ListView start*/
+
+.sample-control.pulltorefresh #listcontainer, .sample-control.virtualscrolling #listcontainer {
+    width: auto;
+}
+
+.sample-control.template .e-m-lv-item {
+    height: 85px;
+    width: 100%;
+    padding: 4px 0px;
+}
+
+    .sample-control.template .e-m-lv-item .cont-bg {
+        padding-top: 10px;
+        padding-left: 5px;
+    }
+
+.sample-control.template .designationstyle {
+    float: right;
+    font-size: 12px;
+    position: relative;
+    right: 25px;
+    padding-top: 5px;
+}
+
+.sample-control.template .aboutstyle {
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 5px;
+    text-align: justify;
+}
+
+.sample-control.template .templatetext {
+    font-weight: bolder;
+    position: relative;
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.sample-control.template .listrightdiv {
+    position: relative;
+}
+
+.sample-control.template .e-m-lv-active .listrightdiv {
+    color: white;
+}
+
+.sample-control.template .e-m-lv-item .brooke {
+    background-image: url('sampleimages/Employees/1.png');
+}
+
+.sample-control.template .e-m-lv-item .claire {
+    background-image: url('sampleimages/Employees/2.png');
+}
+
+.sample-control.template .e-m-lv-item .erik {
+    background-image: url('sampleimages/Employees/3.png');
+}
+
+.sample-control.template .e-m-lv-item .grace {
+    background-image: url('sampleimages/Employees/4.png');
+}
+
+.sample-control.template .e-m-lv-item .jacob {
+    background-image: url('sampleimages/Employees/5.png');
+}
+
+.sample-control.template .profile {
+    background-repeat: no-repeat;
+    background-size: 49px 48px;
+    border: 1px solid #e5e5e5;
+    float: left;
+    height: 52px;
+    position: relative;
+    width: 50px;
+}
+
+
+/*ListView end*/
+
+/*ToggleButton start*/
+
+.toggledivpad {
+    padding: 2%;
+}
+
+.togglesamtext {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.togglesample {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+/*ToggleButton end*/

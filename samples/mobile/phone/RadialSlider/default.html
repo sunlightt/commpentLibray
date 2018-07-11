@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+
+
+</head>
+<body>
+
+    <div class="radialslider default control">
+        <div style="text-align: center">
+            <button id="targetButton" data-role="ejmbutton" data-ej-touchend="radialslideropen" data-ej-text="Click here for image zooming"></button>
+        </div>
+    </div>
+    <div id="defaultradialslider" data-role="ejmradialslider" data-ej-autoopen="false" data-ej-position="bottomcenter" data-ej-change="sliderchange" data-ej-slide="sliderchange" data-ej-radius="150" data-ej-ticks="[30,35,40,45,50,55,60,65]" data-ej-value="50"></div>
+    <div id="imagezoom">
+    </div>
+    <script>
+        function RadialSliderLoad() {
+            if ($("#appList").is(":visible"))
+                $("#defaultradialslider").css("left", parseInt($("#defaultradialslider").css("left")) - 140)
+        }
+        function radialslideropen(args) {
+
+            $("#defaultradialslider").ejmRadialSlider("show");
+        }
+        function sliderchange(args) {
+            $("#imagezoom").css("background-size", args.value + "%")
+        }
+        function RadialSliderRenderModeLoad() {
+            $("#defaultradialslider").ejmRadialSlider({ value: 50, ticks: [30, 35, 40, 45, 50, 55, 60, 65] });
+            $("#imagezoom").css("background-size", "50%")
+        }
+    </script>
+</body>
+</html>

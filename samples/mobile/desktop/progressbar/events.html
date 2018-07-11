@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+<body>
+    <div id="progressSample" class="control sample-control progressbar event"> 
+        <div style="position: relative; overflow-y: auto; overflow-x: hidden;" id="progressBar_eve"
+             data-role="ejmprogress" data-ej-value="0" data-ej-enablecustomtext="true" data-ej-change="onChange"
+             data-ej-text="0%">
+        </div>
+        <br />
+        <div align="center" class="progressbar_event">
+            <div class="sampebutton" style="display: inline-block;">
+                <input id="button1" data-role="ejmbutton" type="button" data-ej-text="Start" data-ej-inline="false"
+                       data-ej-touchend="onbtntouchstart" />
+            </div>
+        </div><br />
+        <span style="display: block; text-align: center;">Events Log:</span>
+        <div id="progressScroll" data-role="ejmscrollpanel" data-ej-isrelative="true" data-ej-targetheight="150" class="progressEventLog" style="overflow-x: hidden;width:160px!important;margin:0 auto;">
+            <div>
+                <div id="value1" style="text-align:center;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var timeInterval;
+        var curValue = 0;
+        window.clearInterval(timeInterval);
+        function onChange(args) {
+            var cText = "Downloading  " + $("#progressBar_eve").ejmProgress('model.value') + "%";
+            $("#progressBar_eve").ejmProgress({ 'text': cText });
+        }
+        function onbtntouchstart(args) {
+            if (args.text == "Start" || args.text == "Restart") {
+                if (args.text == "Restart")
+                    App.activePage.find("#value1").html("");
+                timeInterval = window.setInterval("progress()", 200);
+                App.activePage.find("#button1").ejmButton({ "text": "Pause" });
+            }
+            else if (args.text == "Pause") {
+                App.activePage.find("#button1").ejmButton({ "text": "Start" });
+                timeInterval = window.clearInterval(timeInterval);
+            }
+        }
+        function progress() {
+            var newValue = curValue++;
+            App.activePage.find("#progressBar_eve").ejmProgress({ "value": curValue });
+            App.activePage.find("#value1").prepend("<br/>ProgressBar Value:" + curValue);
+            if (curValue == 100) {
+                timeInterval = window.clearInterval(timeInterval);
+                App.activePage.find("#button1").ejmButton({ "text": "Restart" });
+                App.activePage.find("#value1").prepend("<br/> The Process has been completed Successfully<br/>");
+                curValue = 0;
+            }
+        }
+        $(document).delegate($("body"), "viewbeforetransfer", function (e, data) {
+            window.clearInterval(timeInterval);
+        });
+        function ProgressBarLoad() {
+            $("#progressBar_eve").ejmProgress({ value: 0, text: "0%" });
+        }
+        function ProgressBarRenderModeLoad() {
+            window.clearInterval(timeInterval);
+            curValue = 0;
+            App.activePage.find("#value1").empty();
+            App.activePage.find("#button1").ejmButton({ "text": "Start" });
+            $("#progressBar_eve").ejmProgress({ value: 0, text: "0%" });
+        }
+    </script>
+</body>
+</html>

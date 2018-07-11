@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential Studio for JavaScript : UploadBox Synchronous mode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="../content/bootstrap.min.css" rel="stylesheet">
+    <link href="../content/ejthemes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="../content/default.css" rel="stylesheet" />
+    <link href="../content/default-responsive.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="../scripts/jquery-1.11.3.min.js" type="text/javascript" ></script>
+    <![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="../scripts/jquery-3.1.1.min.js" type="text/javascript"> </script>
+    <!--<![endif]-->
+    <script src="../scripts/ej.web.all.min.js" type="text/javascript"></script>
+    <script src="../scripts/properties.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" action="saveFiles.ashx" method="post" style="overflow:hidden">
+        <!---Form is created with post method and action is mapped to ashx handler. Uploading files will be done only on clicking submit button after selecting the files.!--->
+
+        <div class="posupload">Select a files to upload</div>
+        <div id="UploadDefault"></div>
+        <input type="submit" id="post" value="Submit" />
+     
+    </form>
+    <script type="text/javascript">
+        $(function () {
+            // declaration
+            $("#UploadDefault").ejUploadbox({
+                asyncUpload: false,
+                showFileDetails: false
+            });
+            $("#post").ejButton({
+                size: "normal",
+                showRoundedCorner: true,
+                type: "submit"              
+            });         
+            $("#successmsg").appendTo("#form1");
+        });
+    </script>
+    <style class="cssStyles">
+        .posupload {
+            text-align: center;
+            padding: 10px;
+        }
+
+        #UploadDefault, #post {
+            margin: 18px auto;
+            display: block;
+        }
+
+        #successmsg {
+            display: block;
+            text-align: center;
+        }
+    </style>
+</body>
+</html>

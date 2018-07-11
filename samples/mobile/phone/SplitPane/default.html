@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="syncfusion" />
+    <meta name="author" content="syncfusion" />
+    <title>Essential Studio for JavaScript Mobile</title>
+    <script>
+        if (/msie 8.0/i.test(navigator.userAgent.toLowerCase()))
+            location.replace("error.html");
+        window.isSBfront = true;
+    </script>
+    <!--    Control Syles Sheet-->
+    <link rel="stylesheet" href="../themes/bootstrap.min.css" />
+    <!--Mobile Style sheet-->
+    <link rel="stylesheet" href="../themes/ej.mobile.all.min.css" />
+    <!--    Sample StyleSheet-->
+    <link rel="stylesheet" href="../themes/SampleBrowser.css" />
+    <link rel="stylesheet" href="../themes/SampleStyle.css" />
+    <!--External Script files-->
+    <script type="text/javascript" src="../scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../scripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+    <!--Mobile widgets source-->
+    <script src="../scripts/ej.mobile.all.min.js"></script>
+    <!--Angular and Knockout script reference-->
+    <script type="text/javascript" src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/knockout.min.js"></script>
+    <!--Essential Studio Angular and Knockout scripts  reference-->
+    <script type="text/javascript" src="../scripts/ej.widget.angular.min.js"></script>
+    <script type="text/javascript" src="../scripts/ej.widget.ko.min.js"></script>
+    <!--Sample Browser datas-->
+    <script type="text/javascript" src="../scripts/samplelist.js"></script>
+    <script type="text/javascript" src="../scripts/jsonData.js"></script>
+    <script type="text/javascript" src="../scripts/treemapdata.js"></script>
+</head>
+
+<body>
+    <div class="default splitpane control">
+        <div id="defaultsplitpane" data-role="ejmsplitpane" data-ej-leftpane-templateid="splitpaneleftPane" data-ej-contentpane-templateid="splitpanecontentPane" data-ej-leftpane-showontablet="false">
+        </div>
+        <script id="splitpaneleftPane" type="text/x-jsrender">
+            <div id="leftHeader" data-role="ejmnavigationbar" style="height:130px;">
+                <div id="userimg">
+                </div>
+                <div id="username">
+                    Orville M. Brown
+                </div>
+            </div>
+            <div id="navLeftScroll" data-role="ejmscrollpanel" style="top:130px;">
+                <div id="listLeftPane" data-role="ejmlistview" data-ej-selectedindex="0" data-ej-touchend="_optionClick" data-ej-persistselection="true" data-ej-datasource="window.optionList" data-ej-templateid="optionList">
+                </div>
+            </div>
+        </script>
+        <script id="splitpanecontentPane" type="text/x-jsrender">
+            <div id="splitHeader" data-role="ejmnavigationbar" data-ej-mode="header">
+                <button data-ej-cssclass="e-m-left" id="openDrawer" data-role="ejmactionlink" data-ej-contenttype="image" data-ej-showborder="false" data-ej-imageclass="nav-icon e-m-sbicon-drawermenu" data-ej-touchend="onNavOpen"></button>
+                <span id="mailHeadText" class="e-m-navbar-text e-m-title-left" style="margin-left: 48px;">Inbox</span>
+            </div>
+            <div id="navContentScroll" data-role="ejmscrollpanel">
+                <div id="list" data-role="ejmlistview" data-ej-preventselection="true" data-ej-datasource="window.listData" data-ej-templateid="emailList">
+                </div>
+            </div>
+        </script>
+        <script id="emailList" type="text/x-jsrender">
+            <span class="item-lst">
+                <div class="cnt">
+                    <span class="lst-ima">
+                        <img src="themes/sampleimages/splitpane/{{>class}}.png" class="img-{{>class}} user-image" />
+                    </span>
+            <span class='lst-content'>
+                        <span class="lst-name">{{>name}}</span>
+            <span class="lst-time">{{>time}}</span>
+            <span class="lst-sub">{{>subject}}</span>
+            <span class="lst-des">{{>description}}</span>
+            </span>
+    </div>
+    </span>
+    </script>
+
+    <script id="optionList" type="text/x-jsrender">
+        <span class="opt-lst">
+                <span class="opt-img">
+                    <img src="themes/sampleimages/splitpane/icons/{{>icon}}.png" class="img-{{>icon}} user-image" />
+                </span>
+        <span class='opt-content'>
+                    <span class="opt-name">{{>text}}</span>
+        </span>
+        </span>
+    </script>
+
+    <script>
+        function _optionClick(e) {
+            switch (e.data.text) {
+            case "Inbox":
+                $("#list").ejmListView("option", "dataSource", window.listData);
+                break;
+            case "Sent Item":
+                $("#list").ejmListView("option", "dataSource", window.sentItemData);
+                break;
+            case "Outbox":
+                $("#list").ejmListView("option", "dataSource", window.outboxData);
+                break;
+            }
+            $("#mailHeadText").text(e.data.text);
+            $("#defaultsplitpane").ejmSplitPane("closePane");
+            $("#navContentScroll").ejmScrollPanel("scrollTo",0,0);
+        }
+
+        function onNavOpen() {
+            $("#defaultsplitpane").ejmSplitPane("openLeftPane");
+
+        }
+    </script>
+    </div>
+</body>
+
+</html>

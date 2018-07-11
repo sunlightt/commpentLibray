@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../content/ejthemes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="../content/default.css" rel="stylesheet" />
+    <link href="../content/default-responsive.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+       <script src="../scripts/jquery-1.11.3.min.js" type="text/javascript"></script>
+      <!--<![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="../scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <!--<![endif]-->
+    <script src="../scripts/ej.web.all.min.js" type="text/javascript"></script>
+	<script src="../scripts/properties.js" type="text/javascript"></script>
+    <script src="../scripts/jsrender.min.js"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area" style="width: 100%">
+                <div class="control">
+                    <div id="PivotClient" style="min-height: 300px; width: 100%; float: left;
+                        display: block">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cols-sample-area" style="min-height:100px;">
+                <div id="sampleProperties">
+                    <div class="prop-grid">
+                        <div class="row">
+                            <table>
+                                <tr>
+                                    <td class=" chkrad">
+                                        Mode :
+                                    </td>
+                                    <td class="chkrad">
+                                        <input type="radio" name="dataMode" id="rdbClient" checked /><label for="rdbClient" class="radioBtnLabel">Client</label>
+                                    </td>
+                                    <td class="chkrad" colspan="2">
+                                        <input type="radio" name="dataMode" id="rdbServer" /><label for="rdbServer" class="radioBtnLabel">Server</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row" style="margin-top: 5px;">
+                            <table>
+                                <tr>
+                                    <td class="chkrad">
+                                        Paging Type :
+                                    </td>
+                                    <td class="chkrad">
+                                        <input type="radio" name="type" id="vScrolling" checked="checked" /><label for="vScrolling" class="radioBtnLabel">Virtual Scrolling</label>
+                                    </td>
+                                    <td class="chkrad" colspan="2">
+                                        <input type="radio" name="type" id="paging" /><label for="paging" class="radioBtnLabel">Paging</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                var vScrolling, paging, rdbClient, rdbServer, pGridObj;
+                $(function () {
+                    $("#PivotClient").ejPivotClient({
+                        dataSource: {
+                            data: "http://bi.syncfusion.com/olap/msmdpump.dll",
+                            reportName: "default report",
+                            catalog: "Adventure Works DW 2008 SE",
+                            cube: "Adventure Works", columns: [{ fieldName: "[Customer].[Customer Geography]" }], rows: [{ fieldName: "[Date].[Date]" }],
+                            values: [{ measures: [{ fieldName: "[Measures].[Internet Sales Amount]" }], axis: "columns" }],
+                            pagerOptions: {
+                                categoricalPageSize: 3,
+                                seriesPageSize: 3,
+                                categoricalCurrentPage: 1,
+                                seriesCurrentPage: 1
+                            }
+                        }, title: "OLAP Browser", enableVirtualScrolling: true, beforeExport: "Export", saveReport: "saveReportSettings", fetchReport: "saveReportSettings", loadReport: "saveReportSettings", renderSuccess: "setChartProperties"
+                    });
+                    $("#vScrolling,#paging,#rdbClient,#rdbServer").ejRadioButton({ change: "renderPivotClient" });
+                    vScrolling = $('#vScrolling').data("ejRadioButton"); paging = $('#paging').data("ejRadioButton");
+                    rdbClient = $('#rdbClient').data("ejRadioButton"); rdbServer = $('#rdbServer').data("ejRadioButton");
+                    $("#sampleProperties").ejPropertiesPanel();
+                });
+                function setChartProperties(args) {
+                    this._pivotChart.model.load = "loadTheme";
+                }
+                function Export(args) {
+                    args.url = window.baseurl + "api/PivotClient/Olap/Export";
+                }
+                function saveReportSettings(args) {
+                    if (args.fetchReportSetting)
+                        args.fetchReportSetting.url = window.baseurl + "api/PivotClient/Olap";
+                    else if (args.loadReportSetting)
+                        args.loadReportSetting.url = window.baseurl + "api/PivotClient/Olap";
+                    else
+                        args.saveReportSetting.url = window.baseurl + "api/PivotClient/Olap";
+                    return args;
+                }
+                function renderPivotClient(args) {
+                    $(".e-pivotclient").remove();
+                    var clientData = "";
+                    if (rdbClient.model.checked) {
+                        clientData = {
+                            data: "http://bi.syncfusion.com/olap/msmdpump.dll",
+                            catalog: "Adventure Works DW 2008 SE", cube: "Adventure Works",
+                            columns: [{ fieldName: "[Customer].[Customer Geography]" }], rows: [{ fieldName: "[Date].[Date]" }],
+                            values: [{ measures: [{ fieldName: "[Measures].[Internet Sales Amount]" }], axis: "columns" }],
+                            filters: [],
+                            pagerOptions: {
+                                categoricalPageSize: 3,
+                                seriesPageSize: 3,
+                                categoricalCurrentPage: 1,
+                                seriesCurrentPage: 1
+                            }
+                        }
+                    }
+                    var targetPanel = ej.buildTag("div#PivotClient", "", { "min-height": "300px", width: "100%" })[0].outerHTML;
+                    if (paging.model.checked) {
+                        $(targetPanel).appendTo(".control");
+                        if (clientData == "")
+                            $("#PivotClient").ejPivotClient({ url: window.baseurl + 'api/PivotClient/Olap', renderSuccess: "setChartProperties", serviceMethodSettings: { initialize: "Initialize", nodeDropped: "DropNode", memberExpand: "ExpandMember", cubeChanged: "CubeChange", measureGroupChanged: "MeasureGroup" }, customObject: { "Report": "Paging" }, title: "OLAP Browser", enablePaging: true, beforeExport: "Export", saveReport: "saveReportSettings", fetchReport: "saveReportSettings", loadReport: "saveReportSettings" });
+                        else
+                            $("#PivotClient").ejPivotClient({ dataSource: clientData, title: "OLAP Browser", renderSuccess: "setChartProperties", enablePaging: true, beforeExport: "Export", saveReport: "saveReportSettings", fetchReport: "saveReportSettings", loadReport: "saveReportSettings" });
+                    }
+                    else {
+                        $(targetPanel).appendTo(".control");
+                        if (clientData == "")
+                            $("#PivotClient").ejPivotClient({ url: window.baseurl + 'api/PivotClient/Olap', renderSuccess: "setChartProperties", serviceMethodSettings: { initialize: "Initialize", nodeDropped: "DropNode", memberExpand: "ExpandMember", cubeChanged: "CubeChange", measureGroupChanged: "MeasureGroup" }, customObject: { "Report": "Paging" }, title: "OLAP Browser", enableVirtualScrolling: true, beforeExport: "Export", saveReport: "saveReportSettings", fetchReport: "saveReportSettings", loadReport: "saveReportSettings" });
+                        else
+                            $("#PivotClient").ejPivotClient({ dataSource: clientData, title: "OLAP Browser", renderSuccess: "setChartProperties", enableVirtualScrolling: true, beforeExport: "Export", saveReport: "saveReportSettings", fetchReport: "saveReportSettings", loadReport: "saveReportSettings" });
+                    }
+                }
+            </script>
+        </div>
+    </div>
+    <style>
+        .radioBtnLabel {
+            margin-left: 5px;
+        }
+
+        .cols-prop-area .content {
+            width: auto;
+        }
+
+        .row .cols-prop-area {
+            min-height: 170px;
+            width: auto;
+        }
+    </style>
+
+</body>
+</html>

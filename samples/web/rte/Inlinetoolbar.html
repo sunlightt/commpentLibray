@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <title>Essential Studio for JavaScript : RTE Inline Toolbar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="../content/bootstrap.min.css" rel="stylesheet">
+    <link href="../content/ejthemes/default-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="../content/default.css" rel="stylesheet" />
+    <link href="../content/default-responsive.css" rel="stylesheet" />
+	 <link href="../content/ejthemes/responsive-css/ej.responsive.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="../scripts/jquery-1.11.3.min.js" type="text/javascript" ></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="../scripts/jquery-3.1.1.min.js" type="text/javascript"> </script>
+    <!--<![endif]--> 
+    <script src="../scripts/ej.web.all.min.js" type="text/javascript"></script>
+    <script src="../scripts/properties.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <textarea id="rteSample" rows="10" cols="30" style="width: 740px; height: 440px;display:none;">
+                  &lt;p&gt;&lt;b&gt;Description:&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;The Rich Text Editor (RTE) control is an easy to render in
+    client side. Customer easy to edit the contents and get the HTML content for
+    the displayed content. A rich text editor control provides users with a toolbar
+    that helps them to apply rich text formats to the text entered in the text
+    area. &lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;Functional
+    Specifications/Requirements:&lt;/b&gt;&lt;/p&gt;
+    &lt;ol&gt;&lt;li&gt;&lt;p&gt;Provide
+    the tool bar support, it’s also customizable.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Options
+    to get the HTML elements with styles.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Support
+    to insert image from a defined path.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Footer
+    elements and styles(tag / Element information , Action button (Upload, Cancel))&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Re-size
+    the editor support. &lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Provide
+    efficient public methods and client side events.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Keyboard
+    navigation support.&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;
+        </textarea>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" class="jsScript">
+        $(function () {
+            $("#rteSample").ejRTE({
+                width:"100%",
+				minWidth:"150px",
+				isResponsive:true,
+                showFooter: true,
+				showHtmlSource:true,
+				toolbarOverflowMode:"inline",
+                tools: {
+					formatStyle: ["format"],
+					edit:["findAndReplace"],
+                    font: ["fontName", "fontSize", "fontColor", "backgroundColor"],
+                    style: ["bold", "italic", "underline", "strikethrough"],
+                    alignment: ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"],
+                    lists: ["unorderedList", "orderedList"],
+                    clipboard: ["cut", "copy", "paste"],
+                    doAction: ["undo", "redo"],
+					indenting: ["outdent", "indent"],
+                    clear: ["clearFormat", "clearAll"],
+                    links: ["createLink","removeLink"],
+                    images: ["image"],
+					media:["video"],
+                    tables: ["createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn", "deleteTable"],
+                    effects: ["superscript", "subscript"],
+                    casing: ["upperCase", "lowerCase"],
+					view:["fullScreen","zoomIn","zoomOut"],
+					print:["print"],
+					customUnorderedList: [{
+                        name: "unOrderInsert",
+                        tooltip: "Custom UnOrderList",
+                        css: "e-rte-toolbar-icon e-rte-unlistitems customUnOrder",
+						text: "Smiley",
+                        listImage:"url('../content/images/rte/Smiley-GIF.gif')"
+                    }],
+				    customOrderedList: [{
+                        name: "orderInsert",
+                        tooltip: "Custom OrderList",
+                        css: "e-rte-toolbar-icon e-rte-listitems customOrder",
+						text: "Lower-Greek",
+                        listStyle:"lower-greek"
+                    }] 
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        #rteSample {
+            margin: 0 auto;
+        }
+		.customUnOrder,.customOrder{
+		   height:25px;
+		}
+		.customUnOrder:after {
+		  content: "\e7f1";
+		  font-size:20px;
+		  float:left;
+		  padding: 0px 4px 0px 4px;
+		}
+		.customOrder:after {
+		  content: "\e7f0";
+		  font-size:20px;
+		  float:left;
+		  padding: 0px 4px 0px 4px;
+		}
+    </style>
+</body>
+</html>
